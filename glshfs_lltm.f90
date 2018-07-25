@@ -21,6 +21,24 @@ MODULE GLSHFS_LLTM
    !
    REAL, DIMENSION(12), PARAMETER :: DefaultWaterSurfTemps =                  &
       (/ 0.5, 0.5, 1.5, 3.0, 4.0, 8.0, 13.0, 14.0, 13.0, 8.0, 3.0, 1.0 /)
+      
+      
+   !
+   !  Types and units for the primary output file
+   !
+   INTEGER, DIMENSION(16), PARAMETER :: OutputType =                               &
+      (/ GDT_AirTempMean, GDT_DewPointMean, GDT_WindSpeed,      GDT_CloudCover,    &
+         GDT_Evaporation, GDT_WaterTemp,    GDT_IceTemp,        GDT_IceArea,       &
+         GDT_IceDepth,    GDT_ReflectedRad, GDT_LatentRad,      GDT_SensibleRad,   &
+         GDT_Advection,   GDT_IncidentRad,  GDT_NetLongWaveRad, GDT_TotalHeat/)
+   
+   INTEGER, DIMENSION(16), PARAMETER :: OutputUnit =                               &
+      (/ GDU_Celsius,     GDU_Celsius,    GDU_MetersPerSecond, GDU_Percent,        &
+         GDU_Millimeters, GDU_Celsius,    GDU_Celsius,         GDU_Percent,        &
+         GDU_Millimeters, GDU_WattsPerM2, GDU_WattsPerM2,      GDU_WattsPerM2,     &
+         GDU_WattsPerM2,  GDU_WattsPerM2, GDU_WattsPerM2,      GDU_Calories /)
+      
+      
 
 CONTAINS
 !------------------------------------------------------------------------
@@ -905,21 +923,6 @@ CONTAINS
       TYPE (TDlyData)            :: TDD
 
       !
-      !  Types and units for the output
-      !
-      INTEGER, DIMENSION(16), PARAMETER :: OutputType =                               &
-         (/ GDT_AirTempMean, GDT_DewPointMean, GDT_WindSpeed,      GDT_CloudCover,    &
-            GDT_Evaporation, GDT_WaterTemp,    GDT_IceTemp,        GDT_IceArea,       &
-            GDT_IceDepth,    GDT_ReflectedRad, GDT_LatentRad,      GDT_SensibleRad,   &
-            GDT_Advection,   GDT_IncidentRad,  GDT_NetLongWaveRad, GDT_TotalHeat/)
-      
-      INTEGER, DIMENSION(16), PARAMETER :: OutputUnit =                               &
-         (/ GDU_Celsius,     GDU_Celsius,    GDU_MetersPerSecond, GDU_Percent,        &
-            GDU_Millimeters, GDU_Celsius,    GDU_Celsius,         GDU_Percent,        &
-            GDU_Millimeters, GDU_WattsPerM2, GDU_WattsPerM2,      GDU_WattsPerM2,     &
-            GDU_WattsPerM2,  GDU_WattsPerM2, GDU_WattsPerM2,      GDU_Calories /)
-      
-      !
       !  The index in LLTM_Values corresponding to the data type/unit in the above arrays
       !  e.g. 17 = index into LLTM_Values() array for mean air temp
       !       18 = index into LLTM_Values() array for mean dewpt
@@ -979,7 +982,11 @@ CONTAINS
       !  I am assuming that the types and units are the ones I expect, and I
       !  do not do a verify step here. Laziness, perhaps, but it also helps 
       !  slightly in the performance department.  They OUGHT to be a match
-      !  to what I am expecting.
+      !  to what I am expecting. It also eliminates the problem where a slight
+      !  difference in the text string used would cause things to crash (e.g.
+      !  WaterTmp vs WaterTemp).  That kept biting me when dealing with the
+      !  LBRM interactions.  I had a certain set of strings defined for GLSHFS
+      !  but LBRM had slight differences.
       !
       READ(U1, *, ERR=812)      ! skip this column header line (data types)
       READ(U1, *, ERR=812)      ! skip this column header line (data units)
@@ -1491,8 +1498,8 @@ CONTAINS
       WRITE(U3, 1302, ERR=833) Bsn3
       WRITE(U3, 1303, ERR=833) SeqToDateStringYMD(SSeq3)
       WRITE(U3, 1304, ERR=833) SeqToDateStringYMD(ESeq3)
-      WRITE(U3, 1305, ERR=833)
-      WRITE(U3, 1306, ERR=833)
+      WRITE(U3, 1305, ERR=833) (GlerlDataTypeString10(OutputType(I)), I=1,16)
+      WRITE(U3, 1306, ERR=833) (GlerlDataUnitString6(OutputType(I)),  I=1,16)
       DO Seq = SSeq3, ESeq3
          J = Seq - SSeq3 + 1
          
@@ -1583,14 +1590,17 @@ CONTAINS
  1302 FORMAT(A3, ',  3-character lake code (valid values are SUP MIC HUR GEO STC ERI ONT HGB)')
  1303 FORMAT(A10, ',  Start date (Y-M-D)')
  1304 FORMAT(A10, ',  End   date (Y-M-D)')
- 1305 FORMAT('YYYY-MM-DD,     Evap,  WtrTemp,  IceTemp,  IceArea, IceDepth, ReflctdR,',     &
-                        '  LatentR, SensbleR, AdvectnR, IncidntR, NetLngWR,   StrdHeat,',   &
-                        '  AirTemp,    DewPt,  WindSpd, CloudCvr, AdjATemp, AdjDewPt,',     &
-                        '  AdjWSpd,   AdjCld')
- 1306 FORMAT('YYYY-MM-DD,     (mm),      (C),      (C),      (%), (meters),   (w/m2),',     &
-                        '   (w/m2),   (w/m2),   (w/m2),   (w/m2),   (w/m2), (calories),',   &
-                        '      (C),      (C),    (m/s),      (%),      (C),      (C),',     &
-                        '    (m/s),      (%)')
+! 1305 FORMAT('YYYY-MM-DD,     Evap,  WtrTemp,  IceTemp,  IceArea, IceDepth, ReflctdR,',     &
+!                        '  LatentR, SensbleR, AdvectnR, IncidntR, NetLngWR,   StrdHeat,',   &
+!                        '  AirTemp,    DewPt,  WindSpd, CloudCvr, AdjATemp, AdjDewPt,',     &
+!                        '  AdjWSpd,   AdjCld')
+! 1306 FORMAT('YYYY-MM-DD,     (mm),      (C),      (C),      (%), (meters),   (w/m2),',     &
+!                        '   (w/m2),   (w/m2),   (w/m2),   (w/m2),   (w/m2), (calories),',   &
+!                        '      (C),      (C),    (m/s),      (%),      (C),      (C),',     &
+!                        '    (m/s),      (%)')
+ 1305 FORMAT('YYYY-MM-DD', 20(',',    A10))
+ 1306 FORMAT('YYYY-MM-DD', 20(',    ', A6))
+                        
  1310 FORMAT(A10, 11(',',A9), ',', A11, 9(',',A9))
 
  5011 FORMAT('Invalid start date in file ', A)

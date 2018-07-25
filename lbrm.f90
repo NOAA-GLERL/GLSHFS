@@ -2053,18 +2053,18 @@ CONTAINS
       !  Construct and write header line 8 (data types)
       !
       Line = 'date,'
-      Line = TRIM(Line) // TRIM(GlerlDataTypeString(GDT_Runoff))              // ','
-      Line = TRIM(Line) // TRIM(GlerlDataTypeString(GDT_UpperSoilMoisture))   // ','
-      Line = TRIM(Line) // TRIM(GlerlDataTypeString(GDT_LowerSoilMoisture))   // ','
-      Line = TRIM(Line) // TRIM(GlerlDataTypeString(GDT_GroundWaterMoisture)) // ','
-      Line = TRIM(Line) // TRIM(GlerlDataTypeString(GDT_SurfaceZoneMoisture)) // ','
-      Line = TRIM(Line) // TRIM(GlerlDataTypeString(GDT_SnowWater))
+      Line = TRIM(Line) // TRIM(GlerlDataTypeString10(GDT_Runoff))              // ','
+      Line = TRIM(Line) // TRIM(GlerlDataTypeString10(GDT_UpperSoilMoisture))   // ','
+      Line = TRIM(Line) // TRIM(GlerlDataTypeString10(GDT_LowerSoilMoisture))   // ','
+      Line = TRIM(Line) // TRIM(GlerlDataTypeString10(GDT_GroundWaterMoisture)) // ','
+      Line = TRIM(Line) // TRIM(GlerlDataTypeString10(GDT_SurfaceZoneMoisture)) // ','
+      Line = TRIM(Line) // TRIM(GlerlDataTypeString10(GDT_SnowWater))
       WRITE(U1, 4108, ERR=813) TRIM(Line)
 
       !
       !  Header line 9 (data units)
       !
-      WRITE(U1, 4109, ERR=813) (TRIM(GlerlDataUnitString(GDU_Millimeters)), I=1,6)
+      WRITE(U1, 4109, ERR=813) (TRIM(GlerlDataUnitString10(GDU_Millimeters)), I=1,6)
       
       !
       DO Seq = Output%SDateSeq, Output%EDateSeq
