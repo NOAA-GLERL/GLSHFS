@@ -1,1 +1,2 @@
-# GLSHFS
+Sourcecode for GLSHFS
+
