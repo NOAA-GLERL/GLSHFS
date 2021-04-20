@@ -1,0 +1,39 @@
+cfgname = hist_met
+
+basedir = /mnt/projects/hpc/kessler/glshfs/
+#stndir  = /mnt/projects/hpc/kessler/glshfs/pre/
+stndir  = /mnt/projects/ipemf/kessler/glshfs/pre/build_met_glshfs/stn
+prgdir  = /not/currently/used
+#basedir = /scratch/hunter/thsn_824/
+#stndir  = /scratch/hunter/thsn_824/stn
+#prgdir  = /scratch/hunter/irrelevant_name_not_used
+
+AddStationData   = Yes
+BuildSubbasinMet = Yes
+UpdateHistorical = No
+RunForecasts     = No
+MakeSummaryFiles = No
+ClearTempFiles   = Yes
+
+#
+#  When processing station data, which data types should
+#  have extra details output?  Valid options are:
+#   tmax, tmin, prec, airt, dewp, wspd, cldc
+#  e.g. OutputMetDetails = [tmax, tmin, prec]
+#
+OutputMetDetails = [prec]
+
+BasinBuffer = 50
+LbrmMethodET = 1982
+LltmMethodRadiationHist = 1
+LltmMethodRadiationFcst = 1
+LltmApplyDataCorrectionsHist = TRUE
+LltmApplyDataCorrectionsFcst = TRUE
+
+ForecastName = nothin
+ForecastStart = endofhistdata
+ForecastLength  = 1
+ForecastMetSource = extractfromhist
+ScenarioNames = all
+
+MissingValueString = NA

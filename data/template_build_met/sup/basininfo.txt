@@ -1,0 +1,27 @@
+Lake name:,superior
+Number of subbasins:, 22
+Lake area (sq meters):, 0.819250E+11
+Area of subbasin 01 (sq meters):, 0.970700E+10
+Area of subbasin 02 (sq meters):, 0.494300E+10
+Area of subbasin 03 (sq meters):, 0.342700E+10
+Area of subbasin 04 (sq meters):, 0.265500E+10
+Area of subbasin 05 (sq meters):, 0.358200E+10
+Area of subbasin 06 (sq meters):, 0.285400E+10
+Area of subbasin 07 (sq meters):, 0.178600E+10
+Area of subbasin 08 (sq meters):, 0.243800E+10
+Area of subbasin 09 (sq meters):, 0.310900E+10
+Area of subbasin 10 (sq meters):, 0.213000E+10
+Area of subbasin 11 (sq meters):, 0.864000E+09
+Area of subbasin 12 (sq meters):, 0.506400E+10
+Area of subbasin 13 (sq meters):, 0.569500E+10
+Area of subbasin 14 (sq meters):, 0.983200E+10
+Area of subbasin 15 (sq meters):, 0.790100E+10
+Area of subbasin 16 (sq meters):, 0.687400E+10
+Area of subbasin 17 (sq meters):, 0.522600E+10
+Area of subbasin 18 (sq meters):, 0.183900E+10
+Area of subbasin 19 (sq meters):, 0.252580E+11
+Area of subbasin 20 (sq meters):, 0.585800E+10
+Area of subbasin 21 (sq meters):, 0.883700E+10
+Area of subbasin 22 (sq meters):, 0.820500E+10
+Earliest unprocessed met data for LBRM (Y-M-D):, 2017-05-31
+Earliest unprocessed met data for LLTM (Y-M-D):, 2017-05-31

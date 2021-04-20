@@ -1,0 +1,12 @@
+Lake name:,stclair
+Number of subbasins:,  7
+Lake area (sq meters):, 0.110900E+10
+Area of subbasin 01 (sq meters):, 0.311300E+10
+Area of subbasin 02 (sq meters):, 0.434000E+09
+Area of subbasin 03 (sq meters):, 0.192100E+10
+Area of subbasin 04 (sq meters):, 0.223000E+09
+Area of subbasin 05 (sq meters):, 0.710000E+09
+Area of subbasin 06 (sq meters):, 0.575400E+10
+Area of subbasin 07 (sq meters):, 0.358200E+10
+Earliest unprocessed met data for LBRM (Y-M-D):, 2017-05-31
+Earliest unprocessed met data for LLTM (Y-M-D):, 2017-05-31
