@@ -8,6 +8,7 @@ other hydrological variables for the Great Lakes.
  ---
 ## Installing GLSHFS
 
+
 Installation is a simple process of creating and filling the seven lake basin directories, station data directory (if desired),
 and the glshfs program executable (source code optional). Currently, there are just five files required for each lake basin
 (six if you want the option to use both versions of LBRM). The content of these files will be described later in this
@@ -21,6 +22,7 @@ lbrm_parameters_2016_xxx.txt (if you will ever run the LBRM using the new 2016 E
 where xxx=sup, mic, hur, geo, stc, eri, ont.
 Numerous additional files will be created in each lake basin directory as GLSHyFS is run, but for initial setup you only
 need those five (or six).
+
 ---
 ## Running GLSHyFS
 The process for running GLSHyFS consists of building a valid configuration file, supplying met station data (as needed),
