@@ -1,0 +1,18 @@
+Lake name:,georgian
+Number of subbasins:, 13
+Lake area (sq meters):, 0.189490E+11
+Area of subbasin 01 (sq meters):, 0.208900E+10
+Area of subbasin 02 (sq meters):, 0.183200E+10
+Area of subbasin 03 (sq meters):, 0.439000E+10
+Area of subbasin 04 (sq meters):, 0.609000E+10
+Area of subbasin 05 (sq meters):, 0.561700E+10
+Area of subbasin 06 (sq meters):, 0.588300E+10
+Area of subbasin 07 (sq meters):, 0.156480E+11
+Area of subbasin 08 (sq meters):, 0.362300E+10
+Area of subbasin 09 (sq meters):, 0.191880E+11
+Area of subbasin 10 (sq meters):, 0.269000E+10
+Area of subbasin 11 (sq meters):, 0.947300E+10
+Area of subbasin 12 (sq meters):, 0.401900E+10
+Area of subbasin 13 (sq meters):, 0.117800E+10
+Earliest unprocessed met data for LBRM (Y-M-D):, 2017-05-31
+Earliest unprocessed met data for LLTM (Y-M-D):, 2017-05-31
