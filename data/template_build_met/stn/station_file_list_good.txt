@@ -1,1 +1,0 @@
-/mnt/projects/ipemf/hunter/Data/MetStnData/BuildMetGlshfs/stn/met_USW00014913.csv
