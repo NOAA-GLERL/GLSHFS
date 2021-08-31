@@ -1,1 +1,0 @@
-See the files in /mnt/projects/ipemf/hunter/continuing_projects/data/met_data/isd/
