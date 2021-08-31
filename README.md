@@ -44,7 +44,8 @@ format of each entry is keyword=value, and comment lines are denoted by a # char
 equal sign) are not case-sensitive. The values may be, though. Directory specifications are case-sensitive in a linux
 environment, but not in a Windows environment. White space on either side of the = character is allowed, but not
 required. Specific entries are:
-`AddStationData:`
+
+**AddStationData:**
 User-specified flag to process the station data in StnDir. When this flag is set to Yes/True, the met_*.csv
 files will be read and checked for obvious errors. Then, if the station is within the specified distance of
 each lake basin (see BasinBuffer entry) the data will be added to the stndata_*.csv files for that lake.
