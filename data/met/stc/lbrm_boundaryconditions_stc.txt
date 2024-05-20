@@ -1,0 +1,19 @@
+LBRM moisture storage boundary conditions to be used as non-conservative
+values, overwriting end-of-day values calculated by LBRM.
+Values are specified in centimeters over the subbasin area.
+Missing values are denoted by -999.999
+12 columns per numeric value
+Bsn, Sub, YYYY-MM-DD,   UpperSoil,   LowerSoil, GroundWater, SurfaceZone, SnowWaterEq
+stc,   1, 1939-12-31,       1.000,       5.000,       1.000,       3.000,       1.000
+  
+stc,   2, 1939-12-31,       1.000,       5.000,      50.000,       3.000,       1.000
+  
+stc,   3, 1939-12-31,       1.000,       5.000,      30.000,       3.000,       1.000
+  
+stc,   4, 1939-12-31,       1.000,       5.000,      40.000,       3.000,       1.000
+  
+stc,   5, 1939-12-31,       1.000,       5.000,       1.000,       3.000,       1.000
+  
+stc,   6, 1939-12-31,       1.000,       5.000,      20.000,       3.000,       1.000
+  
+stc,   7, 1939-12-31,       1.000,      20.000,       1.000,       3.000,       1.000
