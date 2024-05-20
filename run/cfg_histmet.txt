@@ -8,8 +8,8 @@ prgdir  = /not/currently/used
 #stndir  = /scratch/hunter/thsn_824/stn
 #prgdir  = /scratch/hunter/irrelevant_name_not_used
 
-AddStationData   = Yes
-BuildSubbasinMet = Yes
+AddStationData   = No
+BuildSubbasinMet = No
 UpdateHistorical = No
 RunForecasts     = No
 MakeSummaryFiles = No
