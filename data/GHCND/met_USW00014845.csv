@@ -1,0 +1,10 @@
+Daily data for a single station.
+StationID:  , USW00014845
+StationName:, "SAGINAW MBS INTL AP"
+Lat&Long    , 43.533, -84.080
+Elevation:  , -9999.000
+Starts(YMD):,2016-09-30
+Ends(YMD):  ,2016-09-30
+Date  ,AirTempMin, AirTempMax, Precipitation, AirTemp, Dewpoint, WindSpeed, CloudCover
+YYYY-MM-DD, Celsius, Celsius, Millimeter, Celsius, Celsius, MetersPerSecond, Percent
+2016-09-30,NA,NA,17.80,NA,NA,NA,NA

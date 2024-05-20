@@ -1,0 +1,10 @@
+Daily data for a single station.
+StationID:  , USC00207690
+StationName:, "S HAVEN"
+Lat&Long    , 42.401, -86.282
+Elevation:  , -9999.000
+Starts(YMD):,2020-03-29
+Ends(YMD):  ,2020-03-29
+Date  ,AirTempMin, AirTempMax, Precipitation, AirTemp, Dewpoint, WindSpeed, CloudCover
+YYYY-MM-DD, Celsius, Celsius, Millimeter, Celsius, Celsius, MetersPerSecond, Percent
+2020-03-29,NA,NA,8.40,NA,NA,NA,NA

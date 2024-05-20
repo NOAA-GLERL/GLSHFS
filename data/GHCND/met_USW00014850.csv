@@ -1,0 +1,10 @@
+Daily data for a single station.
+StationID:  , USW00014850
+StationName:, "TRAVERSE CITY CHERRY CPTL"
+Lat&Long    , 44.741, -85.582
+Elevation:  , -9999.000
+Starts(YMD):,2018-07-31
+Ends(YMD):  ,2018-07-31
+Date  ,AirTempMin, AirTempMax, Precipitation, AirTemp, Dewpoint, WindSpeed, CloudCover
+YYYY-MM-DD, Celsius, Celsius, Millimeter, Celsius, Celsius, MetersPerSecond, Percent
+2018-07-31,14.40,28.90,NA,NA,NA,NA,NA
