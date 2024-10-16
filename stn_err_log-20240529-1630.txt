@@ -1,0 +1,7 @@
+Log of errors from StnDataRangeChk run on 2024May29, at 16:30
+ There were a total of 0 fatal errors encountered
+ There were a total of 0 warnings encountered
+ There were a total of 0 data values removed
+ 0 stations were flagged as having fatal errors.
+ Stations ready to be added to the database are listed in station_file_list_good.txt
+Process StnDataRangeChk finished on 2024May29, at 16:30
