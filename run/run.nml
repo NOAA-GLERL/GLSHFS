@@ -1,0 +1,35 @@
+cfgname = run.nml
+
+basedir = /mnt/projects/ipemf/glshfs/GLSHFS/run/
+stndir  = /mnt/projects/ipemf/glshfs/GLSHFS/run/stn/
+prgdir  = /not/currently/used
+
+AddStationData   = No
+BuildSubbasinMet = No
+UpdateHistorical = Yes
+RunForecasts     = No
+MakeSummaryFiles = Yes
+ClearTempFiles   = yes
+
+#
+#  When processing station data, which data types should
+#  have extra details output?  Valid options are:
+#   tmax, tmin, prec, airt, dewp, wspd, cldc
+#  e.g. OutputMetDetails = [tmax, tmin, prec]
+#
+OutputMetDetails = []
+
+BasinBuffer = 50
+LbrmMethodET = 2016
+LltmMethodRadiationHist = 1
+LltmMethodRadiationFcst = 1
+LltmApplyDataCorrectionsHist = TRUE
+LltmApplyDataCorrectionsFcst = TRUE
+
+ForecastName = nothin
+ForecastStart = endofhistdata
+ForecastLength  = 1
+ForecastMetSource = extractfromhist
+ScenarioNames = all
+
+MissingValueString = NA

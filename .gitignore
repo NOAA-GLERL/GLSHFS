@@ -2,3 +2,12 @@
 *.o
 /internal
 /run/glshfs
+/run/sup
+/run/mic
+/run/hur
+/run/eri
+/run/ont
+/run/stc
+/run/geo
+/run/stn
+data

@@ -1,17 +1,17 @@
 library(sf) # spatial package needed for reading in shapefiles (to get sub-basin areas)
 library(docstring)  # needed for help pages to work (i found that you MUST install "pkgload", for this to work
 
-
 base_dir <- '/mnt/projects/ipemf/glshfs/GLSHFS/run/'
 arm_dir <- '/mnt/projects/ipemf/glshfs/validate/ARM_out/'
 shp_fn <- '/mnt/projects/ipemf/glshfs/gllbrm-boundaries/shp/lbrm_subbasin_outlines.shp'
 
 
-lltm_vars <- c('Evap','WtrTemp','IceTemp','IceArea','IceDepth','ReflctdR','LatentR',
+vars_lltm <- c('Evap','WtrTemp','IceTemp','IceArea','IceDepth','ReflctdR','LatentR',
 			   'SensbleR','AdvectnR','IncidntR','NetLngWR','StrdHeat','AirTemp','DewPt',
 			   'WindSpd','CloudCvr','AdjATemp','AdjDewPt','AdjWSpd','AdjCld')
 
-lbrm_vars <-  c('Runoff','UprSoilMst','LwrSoilMst','GroundWatr','SurfaceSto','SnowWaterE')
+vars_lbrm <-  c('Runoff','UprSoilMst','LwrSoilMst','GroundWatr','SurfaceSto','SnowWaterE')
+vars_met  <-  c('AirTempMin','AirTempMax','Precip','AirTemp','Dewpoint','Windspeed','CloudCover')
 
 
 read_lltm <- function(lk, varname=NULL, dir=base_dir){
@@ -41,10 +41,10 @@ read_lltm <- function(lk, varname=NULL, dir=base_dir){
 read_lbrm <- function(lk, subs, varname='Runoff', dir=base_dir){
 	#' Read LBRM output
 	#' 
-	#' Reads in GLSHFS/LBRM output for a given lake and sub-basin(s).  
+	#' Reads in *summary files* (GLSHFS/LBRM input and output) for a given lake and sub-basin(s).  
 	#' @param lk the string corresponding to a major basin (sup, mic, hur, geo, eri, stc, eri, ont)
 	#' @param subs an integer or vector of which sub-basins to read in e.g. subs=4, subs=1:10, subs=1:nsubs$sup
-	#' @param varname A string which corresponds to the output in the header of lbrm_output csv files (default is Runoff) 
+	#' @param varname A string which corresponds to the output in the header of summary files, see vars_lbrm and vars_met
 	#' @param dir the main GLSHFS output directory (with sub-dirs for "sup", "mih", etc.) This is defined by default in glshfs_utils.R but you may wish to change it
 	#' @return data.frame with dates as first column and following columns populated by the selected sub-basins (named sub01, sub02, etc.)
 	#' @examples
@@ -55,22 +55,25 @@ read_lbrm <- function(lk, subs, varname='Runoff', dir=base_dir){
 
 
 	i <- subs[1]
+	nskip <- 9
 	# preallocate dataframe
-	fin <- sprintf('%s/%s/lbrm_output_%s%02i.csv', dir, lk, lk, i)
-	dat <- read.table(fin, sep=',', skip=9, strip.white=T, colClasses=c('Date', rep('numeric', 6)))
+	#fin <- sprintf('%s/%s/lbrm_output_%s%02i.csv', dir, lk, lk, i)
+	fin <- sprintf('%s/%s/summary_%s%02i.csv', dir, lk, lk, i)
+	dat <- read.table(fin, sep=',', skip=nskip, strip.white=T, colClasses=c('Date', rep('numeric', 13)))
 	lbrm_out <- data.frame(dts=dat[,1]) 
 	for (i in subs){
 		subname <- sprintf('bas%02i', i)
-		cat(sprintf('processing GLSHFS: %s %s \r', lk, subname))
-		fin <- sprintf('%s/%s/lbrm_output_%s%02i.csv', dir, lk, lk, i)
+		cat(sprintf('processing GLSHFS %s: %s %s \r', varname, lk, subname))
+		fin <- sprintf('%s/%s/summary_%s%02i.csv', dir, lk, lk, i)
 		if(!file.exists(fin)) stop('file missing for ', subname)
-		dat <- read.table(fin, sep=',', skip=9, strip.white=T, colClasses=c('Date', rep('numeric', 6)))
-		hdr <- scan(fin, what='character', skip=7, nlines=1, sep=',', strip=T, quiet=T)
+		dat <- read.table(fin, sep=',', skip=nskip, strip.white=T, colClasses=c('Date', rep('numeric', 13)))
+		hdr <- scan(fin, what='character', skip=nskip-2, nlines=1, sep=',', strip=T, quiet=T)
 		names(dat) <- hdr
 		dat <- dat[,c('Date',varname)]
 		names(dat) <- c('dts',subname)
 		lbrm_out <- merge(lbrm_out, dat, by='dts', all.x=T)
 	}
+	cat('\ndone\n')
 	return(lbrm_out)
 }
 
@@ -203,6 +206,6 @@ cat('\t fxns loaded: \n\t\t - read_lltm() \n\t\t - read_lbrm()
 
 cat('\n\n\t varables loaded: \n\t\t - shp (sf class, subbasin outlines)
 \t \t - nsubs (list, number of sub-basins) \n \t \t - A_sup, A_mic, etc. (subbasin areas dataframes)
-\t \t - lbrm_vars (lbrm variable names) \n \t \t - lltm_var (lltm varable names)')
+\t \t - vars_lbrm (lbrm variable names) \n \t \t - vars_lltm (lltm varables) \n \t \t - vars_met (met varables)')
 
 cat('\n\n =================================================================================\n\n\n\n')
