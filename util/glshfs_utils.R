@@ -78,7 +78,7 @@ read_lbrm <- function(lk, subs, varname='Runoff', dir=base_dir){
 }
 
 #read_arm <- function(lk, subs, t0=NULL, tf=NULL){
-read_arm <- function(lk, subs, t0='1900-01-01', tf=Sys.Date(), perc_thresh=10, dir=arm_dir){
+read_arm <- function(lk, subs, varname='flow', t0='1900-01-01', tf=Sys.Date(), perc_thresh=10, dir=arm_dir){
 	#' Read LBRM output
 	#' 
 	#' Reads in GLSHFS/LBRM output for a given lake and sub-basin(s). A date range ought to be set by the user since
@@ -88,7 +88,7 @@ read_arm <- function(lk, subs, t0='1900-01-01', tf=Sys.Date(), perc_thresh=10, d
 	#' @param subs an integer or vector of which sub-basins to read in e.g. subs=4, subs=1:10, subs=1:nsubs$sup
 	#' @param t0 either a Date object or a character string of the form 'YYYY-MM-DD' defining the START date of the resulting data.frame.  
 	#' @param tf either a Date object or a character string of the form 'YYYY-MM-DD' defining the END date of the resulting data.frame
-	#' @param perc_thresh minimum threshold to use for the percentage of a basin that is gaged (default 10%)
+	#' @param perc_thresh minimum threshold to use for the percentage of a basin that is gaged (default 10 percent)
 	#' @param dir is where the ARM files live (*.flw) This is defined by default in glshfs_utils.R but you may wish to change it
 	#' @return data.frame with dates as first column and following columns populated by the selected sub-basins (named sub01, sub02, etc.)
 	#' 		for sub-basins that don't have valid data within the time-window (or for which perc_thresh is not exceeded)
@@ -133,7 +133,10 @@ read_arm <- function(lk, subs, t0='1900-01-01', tf=Sys.Date(), perc_thresh=10, d
 			next
 		}
 
-		dat <- data.frame(dts=file_dts, flow=dat$flow)
+		selNA <- dat['flow'] == -999.999 
+		dat[selNA, 'flow'] <- NA
+
+		dat <- data.frame(dts=file_dts, varout=dat[varname])
 		names(dat) <- c('dts', subname) 
 
 		arm_out <- merge(arm_out, dat, by='dts', all.x=T)
@@ -192,6 +195,27 @@ nse <- function(obs, sim, na.rm){
 }
 
 
+
+
+setup_calib_runs <- function(src_dir='/mnt/projects/ipemf/glshfs/GLSHFS/run'){
+	print('setting up in current directory...')
+
+	print('Parmfiles source is hardcoded: /mnt/projects/ipemf/glshfs/lbrm/LBRM/parmfiles')
+	print('TODO: also generate lbrm_bounds.txt')
+	for (lk in 1:length(nsubs)){ 
+		for (i in 1:nsubs[[lk]]){
+			lk_str <- names(nsubs[lk])
+		   	#cat(sprintf('%s_%02i\n', names(nsubs[lk]), i))
+		   	subname <- sprintf('%s_%02i',lk_str, i)
+			print(subname)
+			dir.create(paste('.', subname, sep='/'), showWarn=F)
+			file.copy(sprintf('%s/%s/subdata_%s%02i.csv', src_dir, lk_str, lk_str, i), sprintf('./%s/lbrm_met.csv', subname), overwrite=T)
+			file.copy(sprintf('/mnt/projects/ipemf/glshfs/lbrm/LBRM/parmfiles/Param%02i_%s.csv', i, lk_str), sprintf('./%s/lbrm_params.txt', subname), overwrite=T)
+		}
+	}
+
+	print('DONE: now use bash, etc. to clip un-needed columns from lbrm_met.csv and rename lbrm_met.txt')
+}
 
 # print what just got loaded...
 cat('====================== LOADED GLSHFS UTILITIES ==================================\n')

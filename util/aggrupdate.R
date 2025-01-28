@@ -91,7 +91,7 @@ agg_LLB <- function(lk_dat, lk, A){ # aggregate lake land basin from read_all_su
 # these can be indexed like sup[,,'bas05'] or mic[,'AirTempMax',4], etc.
 dts <<- read_subdata('sup',0)$Date # universal date vector
 
-cat(sprintf('reading in data for '))
+#cat(sprintf('reading in data for '))
 sup <- read_all_subs('sup')
 mic <- read_all_subs('mic')
 hur <- read_all_subs('hur')
@@ -124,8 +124,8 @@ e_ont <- read_lltm('ont', varname='Evap')
 write_month_tab(e_sup, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'sup'))
 write_month_tab(e_mic, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'mic'))
 write_month_tab(e_hur, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'hur'))
-write_month_tab(e_geo, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'stc'))
-write_month_tab(e_stc, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'geo'))
+write_month_tab(e_geo, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'geo'))
+write_month_tab(e_stc, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'stc'))
 write_month_tab(e_eri, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'eri'))
 write_month_tab(e_ont, 'Evap', sprintf('%s/evaporation_%s.csv', out_dir, 'ont'))
 
