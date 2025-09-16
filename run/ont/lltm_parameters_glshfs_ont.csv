@@ -1,0 +1,31 @@
+"Master" parameter file for use with the Large Lake Thermodynamics Model from NOAA/GLERL
+This parameter set is the result from calibration 14 Feb 2013 by Tim Hunter
+Everything after parameters (dates, temps, ice, etc.) is arbitrary and will be overwritten for each run.
+ont, 3-character lake code (valid values are SUP MIC HUR GEO STC ERI ONT HGB)
+ 0.70000E+09    Ice-model-related parameter, "tau sub a"           
+ 0.68190E+01    Temperature-model-related parameter, "a prime"     
+ 0.93600E-02    Temperature-model-related parameter, "b prime"     
+ 0.89900E-02    Temperature-model-related parameter, "F prime"     
+ 0.10200E+02    Temperature-model-related parameter, "a"           
+ 0.32600E-02    Temperature-model-related parameter, "b"           
+ 0.20800E-02    Temperature-model-related parameter, "F"           
+ 0.20200E-01    Temperature-model-related parameter, "V sub e"     
+ 0.12400E+01    Temperature-model-related parameter, "p"           
+ 0.63090E+05    Ice-model-related parameter, "tau sub w"           
+-9.99999E+29,   Parameter 11 (unused)
+-9.99999E+29,   Parameter 12 (unused)
+-9.99999E+29,   Parameter 13 (unused)
+  1950-01-01,   Start Date (Yr-Mn-Dy)
+  2000-12-31,   Finish Date (Yr-Mn-Dy)
+ 0.10000E+01,   Surface temperature on start date (deg C)
+-9.99999E+29,   unused
+ 0.12180E-10,   Ice Area (fraction from 0.0 to 1.0)
+ 0.10000E-03,   Ice Depth (meters)
+ 0.00000E+00,   Ice Temperature (deg C)
+-9.99999E+29,   unused
+ 0.50000E+01,   Age of Current Layer
+    3,          Number of layers
+Layer, AgeOfLayer, SurfTempFromLayer, TotalHeat
+   1,  0.12741E+04,  0.000,  0.48225E+00
+   2,  0.12685E+04,  0.000,  0.48509E+00
+   3,  0.12633E+04,  0.000,  0.48929E+00

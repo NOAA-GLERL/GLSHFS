@@ -1,0 +1,20 @@
+Lake name:,ontario
+Number of subbasins:, 15
+Lake area (sq meters):, 0.191210E+11
+Area of subbasin 01 (sq meters):, 0.462000E+10
+Area of subbasin 02 (sq meters):, 0.263300E+10
+Area of subbasin 03 (sq meters):, 0.643500E+10
+Area of subbasin 04 (sq meters):, 0.174300E+10
+Area of subbasin 05 (sq meters):, 0.128720E+11
+Area of subbasin 06 (sq meters):, 0.249200E+10
+Area of subbasin 07 (sq meters):, 0.576800E+10
+Area of subbasin 08 (sq meters):, 0.531700E+10
+Area of subbasin 09 (sq meters):, 0.202000E+10
+Area of subbasin 10 (sq meters):, 0.295600E+10
+Area of subbasin 11 (sq meters):, 0.286900E+10
+Area of subbasin 12 (sq meters):, 0.126540E+11
+Area of subbasin 13 (sq meters):, 0.273900E+10
+Area of subbasin 14 (sq meters):, 0.263200E+10
+Area of subbasin 15 (sq meters):, 0.226900E+10
+Earliest unprocessed met data for LBRM (Y-M-D):, 2017-06-01
+Earliest unprocessed met data for LLTM (Y-M-D):, 2017-06-01

@@ -29,7 +29,7 @@ The process for running GLSHyFS consists of building a valid configuration file,
 and then running the GLSHyFS executable. There are four main operations in GLSHyFS, and a single run may include any
 or all of them. These operations are:
 
-1. Adding new met station data to the stndata_\*.csv files.
+1. Adding new met station data to the stndata\_\*.csv files.
 2. Building subbasin and overlake averages from new station data for the historical period defined by all station
 data that has ever been added via step one.
 3. Running the LBRM and LLTM for the historical period up to the end of the data created in step two.
