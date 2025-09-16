@@ -3,3 +3,4 @@
 /internal
 /run/glshfs
 data/*/*.dly
+data/*/*.tar
