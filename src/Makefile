@@ -99,7 +99,7 @@ glshfs:    glshfs.o buildsubbasinmet.o gl_constants.o glshfs_util.o glshfs_globa
            buildsubbasinmet.o                                                                     \
            stndata_aggregation.o glerlmaps.o subbasin_met.o glshfs_structureddata.o               \
            outlook_met.o glshfs_lbrm.o lbrm.o glshfs_lltm.o lltm.o  summaryfiles.o 
-	$(CC) $(CFLAGS) -o ../glshfs glshfs.o glshfs_util.o gl_constants.o cpp_util.o glshfs_global.o       \
+	$(CC) $(CFLAGS) -o ../run/glshfs glshfs.o glshfs_util.o gl_constants.o cpp_util.o glshfs_global.o       \
 	                   glerldatatypesandunits.o dailydatastructures.o glshfs_files.o                 \
 							 basininfo.o glshfs_configfile.o stndata_rangecheck.o stndata_aggregation.o	 \
 							 dailydatacollections.o glerlmaps.o subbasin_met.o buildsubbasinmet.o          \
