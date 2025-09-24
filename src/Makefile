@@ -69,6 +69,7 @@ endif
 #  Standard make target stuff
 #
 default: glshfs
+	$(info Check run dir to see if GLSHFS binary was created)
 
 
 #
